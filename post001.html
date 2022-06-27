@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+
+<!-- Meta -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!-- Title -->
+<title>swmmjs blog</title>
+
+<!-- Favicons -->
+<link rel="shortcut icon" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/favicon_60x60.png">
+<link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicon_76x76.png">
+<link rel="apple-touch-icon" sizes="120x120" href="assets/img/favicon_120x120.png">
+<link rel="apple-touch-icon" sizes="152x152" href="assets/img/favicon_152x152.png">
+
+<!-- Google Web Fonts -->
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300,600' rel='stylesheet' type='text/css'>
+
+<!-- CSS Styles -->
+<link rel="stylesheet" href="assets/css/styles.css" />
+
+<!-- CSS Base -->
+<link id="theme" rel="stylesheet" href="assets/css/themes/theme-classic.css" />
+
+</head>
+
+<body>
+
+<!-- Loader -->
+<div id="page-loader"><svg class="loader-1 loader-primary" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="circle" fill="none" stroke-width="3" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div>
+<!-- Loader / End -->
+
+<!-- Header -->
+<header id="header" class="fullwidth light">
+	
+	<!-- Navigation Bar -->
+	<div id="nav-bar">
+
+		<!-- Logo -->
+		<a class="logo-wrapper" href="index.html">
+			swmm-js
+		</a>
+
+		<nav class="module-group right">
+
+			
+			
+
+
+			<!-- Search -->
+			<div class="module search left">
+				<span class="trigger" data-toggle="search-bar"><i class="ti-search"></i></span>
+			</div>
+
+		</nav>
+
+		<!-- Menu Toggle -->
+		<div class="menu-toggle">
+			<a href="#" data-toggle="mobile-menu" class="mobile-trigger"><span><span></span></span></a>
+		</div>
+
+	</div>
+
+	<!-- Notification Bar -->
+	<div id="notification-bar"></div>
+
+	<!-- Search Bar -->
+	<div id="search-bar">
+		<form id="search-form">
+			<input class="search-bar-input" type="text" placeholder="Search...">
+			<button class="search-bar-submit"><i class="ti-search"></i></button>
+		</form>
+		<a href="#" class="search-bar-close" data-toggle="search-bar"><i class="ti-close"></i></a>
+	</div>
+
+</header>
+<!-- Header / End -->
+
+<!-- Page Title -->
+<div id="page-title" class="page-title page-title-1 bg-grey">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<h1></h1>
+			</div>
+			<div class="col-md-6">
+				<ol class="breadcrumb">
+					<li><a href="index.html">Home Page</a></li>
+					<li class="active">Blog Post</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Page Title / End -->
+
+<!-- Content -->
+<div id="content">
+
+	<section>
+
+		<div class="container">
+			<div class="row">
+
+				<!-- Sidebar -->
+				<div class="sidebar col-md-3">
+					
+					<!-- Widget - Search -->
+					<div class="widget widget-search">
+						<h6 class="text-uppercase text-muted">Search</h6>
+						<form id="search-widget-form" class="validate-form">
+							<div class="form-group inner-button">
+								<input type="text" class="form-control input-2 input-sm" required>
+								<button type="submit"><i class="ti-search"></i></button>
+							</div>
+						</form>
+					</div>
+
+					<!-- Widget - Newsletter -->
+					<div class="widget widget-newsletter">
+						<h6 class="text-uppercase">Subscribe Us</h6>
+						<form action="http://suelo.us12.list-manage1.com/subscribe/post-json" id="sign-up-form-2" class="sign-up-form validate-form" method="POST">
+							<input type="hidden" name="u" value="ed47dbfe167d906f2bc46a01b">
+                    		<input type="hidden" name="id" value="24ac8a22ad">
+							<input type="email"  name="MERGE0" size="25" value="" class="form-control input-2 input-sm" placeholder="Your e-mail..." required>
+							<button type="submit" class="btn btn-filled btn-sm btn-submit btn-block"><span>Sign Up</span></button>
+						</form>
+					</div>
+
+				</div>
+
+				<!-- Content -->
+				<div class="content col-md-9">
+					<!-- Post -->
+					<div class="post single">
+						<div class="post-image">
+							<img src="assets/img/posts/post01.jpg" alt="">
+						</div>
+						<ul class="post-meta">
+							<li><span>Added:</span>27 Jun 2022</li>
+							<li><span>Author:</span><a href="#">Issac Gardner</a></li>
+							<li><span>Tags:</span><a href="#">fundamentals</a>, <a href="#">webdevelopment</a></li>
+						</ul>
+						<div class="post-content">
+							<h1>Intro to swmm-js</h1>
+							<p class="lead">Learn the structure of a simple web app using swmm-js.</p>
+							<p>swmm-js is meant to be an easy way to interact with and display swmm models and results, and this demo is a simple intro. You will see how to load, read, and display swmm file information. In later demos, you will see how to modify the data and save it, and even how to run swmm in your browser and create applications for interacting with models and results.
+							</p>
+							<p>
+								This post is a quick intro to swmm-js. For a more in-depth explanation of what is going on in this demo, click <link>here</link>.
+							</p>
+							<p>
+								Take a look at the following app, and the accompanying code. Clicking on 'Load Model' will open a file dialog. If you select a swmm .inp file, you can see the app display the title of the swmm model.
+							</p>
+							<p>
+							
+<div style="border-radius: 25px; border: 2px solid #000000; padding: 20px;">
+<button id="btn" onclick="openFile()">Load model</button>
+<input id="fileInput" type="file" style="visibility:hidden" onchange="readOutFile(event)" />
+<br>
+<pre>Title:</pre>
+<pre id="titleText"></pre>
+<script src="https://unpkg.com/@swmm-js/swmmjs"></script>
+
+<script>
+	// Create an empty swmm model.
+	let model = {};
+
+	// The function called when user clicks 'btn'.
+	function openFile() {
+	// Use a familiar 'file input' dialog sequence.
+	document.getElementById('fileInput').click()
+	}
+
+	// Reading a user-selected file is just a few lines of code,
+	// called when the input 'fileInput' experiences a change:
+	function readOutFile(event) {
+	// Set the file to any selected by the user as a
+	// result of the fileInput change event.
+	var file = event.target.files[0]
+
+	// If the user did not select a file, return empty.
+	if (!file) return;
+
+	// Create a reader to read a file
+	var reader = new FileReader()
+
+	// This reader setting tells the FileReader
+	// to execute statements after the file is read.
+	reader.onload = function(event) {
+
+		// Read the model from a string into a JSON object
+		model = parseInput(event.target.result)
+
+		// Get the title
+		var theTitle = model.TITLE
+		
+		// Take a look at the SJX model structure:
+		console.log(model)
+
+		// Write the title to the webpage.
+		document.getElementById('titleText').innerHTML = theTitle;
+	}
+
+	// Tell the reader to attempt to read the file.
+	reader.readAsText(file)
+	}
+</script>
+</div>
+</p>
+<p>The code for the previous simple app is shown below.  </p>
+<p>You can copy the code text and save it in a file called index.html, and execute this app right from your desktop without a need for a compiler or any setups or downloads.</p>
+
+<pre>
+&lt;button id="btn" onclick="openFile()"&gt;Load model&lt;/button&gt;
+&lt;input id="fileInput" type="file" style="visibility:hidden" onchange="readOutFile(event)" /&gt;
+&lt;br&gt;
+&lt;pre&gt;Title:&lt;/pre&gt;
+&lt;pre id="titleText"&gt;&lt;/pre&gt;
+&lt;script src="https://unpkg.com/@swmm-js/swmmjs"&gt;&lt;/script&gt;
+
+&lt;script&gt;
+	// Create an empty swmm model.
+	let model = {};
+
+	// The function called when user clicks 'btn'.
+	function openFile() {
+	// Use a familiar 'file input' dialog sequence.
+	document.getElementById('fileInput').click()
+	}
+
+	// Reading a user-selected file is just a few lines of code,
+	// called when the input 'fileInput' experiences a change:
+	function readOutFile(event) {
+	// Set the file to any selected by the user as a
+	// result of the fileInput change event.
+	var file = event.target.files[0]
+
+	// If the user did not select a file, return empty.
+	if (!file) return;
+
+	// Create a reader to read a file
+	var reader = new FileReader()
+
+	// This reader setting tells the FileReader
+	// to execute statements after the file is read.
+	reader.onload = function(event) {
+
+		// Read the model from a string into a JSON object
+		model = parseInput(event.target.result)
+
+		// Get the title
+		var theTitle = model.TITLE
+		
+		// Take a look at the SJX model structure:
+		console.log(model)
+
+		// Write the title to the webpage.
+		document.getElementById('titleText').innerHTML = theTitle;
+	}
+
+	// Tell the reader to attempt to read the file.
+	reader.readAsText(file)
+	}
+&lt;/script&gt;
+							</pre>
+							<p>If you use this code and recreate the file on your own system, you can start the app by double clicking on that file's icon.</p>
+							<p>
+								The code presented allows you to open a swmm .inp file, parse it into a Javascript object, and then access that object. 
+							</p><p>
+								The best part about using an .inp file in SJX format is that any attribute you are looking for can be easily found. Arrays of objects like links are easily referenced, and properties can be identified by names like those found in an .inp file. Identifying the model title is as easy as the line:
+							</p><pre>
+var theTitle = model.TITLE
+							</pre><p>
+								and if you know the name of a conduit, you can access the length as easy as:
+							</p><pre>
+var theLength = model.CONDUITS['conduitName'].Length 
+							</pre><p>
+								Even better, if you know the name of a timeseries, you can access, display, and update that data as shown in an upcoming demo post.
+							</p><p>
+								The same can be said for output files, and generating data protection schemes for create, read, update, and delete operations is simple enough. At any given point in time, all parts of the model are easily accessible and knowable. You have control over what data is displayed and how that data is processed or stored.
+							</p><p>
+								Once you have gotten used to using swmm .inp and .out files with Javascript, you can learn to utilize wasm, which will allow you to execute models in the browser and run swmm on iPhones, Apple computers, tablets, pretty much any device capable of running a modern browser. There are preliminary plans for branching out into React and Vue, and work for that can be seen at <link href="">this</link> Github repo.
+							</p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</section>
+
+	<section class="bg-secondary dark text-center border-bottom">
+		
+	</section>
+
+</div>
+<!-- Content / End -->
+
+<!-- Footer -->
+<footer id="footer" class="dark bg-secondary">
+    
+	<div class="container">
+			<div class="row">
+
+
+				<div class="col-md-3">
+					<!-- Widget - Newsletter -->
+					<div class="widget widget-newsletter">
+						<h6 class="text-uppercase text-muted">Subscribe Us</h6>
+						<form action="http://suelo.us12.list-manage1.com/subscribe/post-json" id="sign-up-form" class="sign-up-form validate-form" method="POST"
+							data-message-error="Opps... Something went wrong - please try again later"
+							data-message-success="Yeah! You will recieve a confirmation email soon..."
+						>
+							<input type="hidden" name="u" value="ed47dbfe167d906f2bc46a01b">
+                    		<input type="hidden" name="id" value="24ac8a22ad">
+							<input type="email"  name="MERGE0" size="25" value="" class="form-control input-2 input-sm" placeholder="Your e-mail..." required>
+							<button type="submit" class="btn btn-filled btn-sm btn-submit btn-block"><span>Sign Up</span></button>
+						</form>
+						
+					</div>
+					<!-- Widget - Contact -->
+					<div class="widget widget-contact">
+						<h6 class="text-uppercase text-muted">Contact Us</h6>
+						<img src="assets/img/photos/location-photo01.jpg" alt="" class="img-rounded mb-20">
+						<address>
+							<strong>Address:</strong><br>
+							PO Box 586<br>
+							Beaverton, OR 97075<br><br>
+							<strong>E-mail:</strong><br>
+							datapica@gmail.com<br>
+						</address>
+					</div>
+				</div>
+
+			</div>
+			<hr class="sep-line">
+			<div class="row pt-50 pb-50">
+				<div class="col-sm-6 text-muted">
+					Copyright blcnblu 2022©. All rights reserved.<br>
+				</div>
+			</div>
+		</div>
+
+</footer>
+<!-- Footer / End -->
+
+
+<!-- JS Libraries -->
+<script src="assets/js/jquery-1.12.3.min.js"></script>
+
+<!-- JS Plugins -->
+<script src="assets/js/plugins.js"></script>
+
+<!-- JS Core -->
+<script src="assets/js/core.js"></script>
+
+</body>
+
+</html>
