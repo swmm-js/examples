@@ -1,0 +1,51 @@
+<button id="btn" onclick="openFile()">Load model</button>
+<input id="fileInput" type="file" style="visibility:hidden" onchange="readOutFile(event)" />
+<br>
+<pre>Title:</pre>
+<pre id="titleText"></pre>
+<script src="https://unpkg.com/@swmm-js/swmmjs"></script>
+
+<script>
+  // Create an empty swmm model.
+  let model = {};
+
+  // The function called when user clicks 'btn'.
+  function openFile() {
+    // Use a familiar 'file input' dialog sequence.
+    document.getElementById('fileInput').click()
+  }
+
+  // Reading a user-selected file is just a few lines of code,
+  // called when the input 'fileInput' experiences a change:
+  function readOutFile(event) {
+    // Set the file to any selected by the user as a
+    // result of the fileInput change event.
+    var file = event.target.files[0]
+
+    // If the user did not select a file, return empty.
+    if (!file) return;
+
+    // Create a reader to read a file
+    var reader = new FileReader()
+
+    // This reader setting tells the FileReader
+    // to execute statements after the file is read.
+    reader.onload = function(event) {
+
+      // Read the model from a string into a JSON object
+      model = parseInput(event.target.result)
+
+      // Get the title
+      var theTitle = model.TITLE
+
+      // Take a look at the SJX model structure:
+      console.log(model)
+
+      // Write the title to the webpage.
+      document.getElementById('titleText').innerHTML = theTitle;
+    }
+
+    // Tell the reader to attempt to read the file.
+    reader.readAsText(file)
+  }
+</script>
