@@ -141,152 +141,29 @@
 							<img src="assets/img/posts/post01.jpg" alt="">
 						</div>
 						<ul class="post-meta">
-							<li><span>Added:</span>27 Jun 2022</li>
+							<li><span>Added:</span>28 Jun 2022</li>
 							<li><span>Author:</span><a href="#">Issac Gardner</a></li>
 							<li><span>Tags:</span><a href="#">fundamentals</a>, <a href="#">webdevelopment</a></li>
 						</ul>
 						<div class="post-content">
 							<h1>Intro to swmm-js</h1>
-							<p class="lead">Learn the structure of a simple web app using swmm-js.</p>
-							<p>swmm-js is meant to be an easy way to interact with and display swmm models and results, and this demo is a simple intro. You will see how to load, read, and display swmm file information. In later demos, you will see how to modify the data and save it, and even how to run swmm in your browser and create applications for interacting with models and results.
-							</p>
-							<p>
-								This post is a quick intro to swmm-js. For a more in-depth explanation of what is going on in this demo, click <link>here</link>.
-							</p>
-							<p>
-								Take a look at the following app, and the accompanying code. Clicking on 'Load Model' will open a file dialog. If you select a swmm .inp file, you can see the app display the title of the swmm model.
-							</p>
-							<p>
-							
-<div style="border-radius: 25px; border: 2px solid #000000; padding: 20px;">
-<button id="btn" onclick="openFile()">Load model</button>
-<input id="fileInput" type="file" style="visibility:hidden" onchange="readOutFile(event)" />
-<br>
-<pre>Title:</pre>
-<pre id="titleText"></pre>
-<script src="https://unpkg.com/@swmm-js/swmmjs"></script>
-
-<script>
-	// Create an empty swmm model.
-	let model = {};
-
-	// The function called when user clicks 'btn'.
-	function openFile() {
-	// Use a familiar 'file input' dialog sequence.
-	document.getElementById('fileInput').click()
-	}
-
-	// Reading a user-selected file is just a few lines of code,
-	// called when the input 'fileInput' experiences a change:
-	function readOutFile(event) {
-	// Set the file to any selected by the user as a
-	// result of the fileInput change event.
-	var file = event.target.files[0]
-
-	// If the user did not select a file, return empty.
-	if (!file) return;
-
-	// Create a reader to read a file
-	var reader = new FileReader()
-
-	// This reader setting tells the FileReader
-	// to execute statements after the file is read.
-	reader.onload = function(event) {
-
-		// Read the model from a string into a JSON object
-		model = parseInput(event.target.result)
-
-		// Get the title
-		var theTitle = model.TITLE
-		
-		// Take a look at the SJX model structure:
-		console.log(model)
-
-		// Write the title to the webpage.
-		document.getElementById('titleText').innerHTML = theTitle;
-	}
-
-	// Tell the reader to attempt to read the file.
-	reader.readAsText(file)
-	}
-</script>
-</div>
-</p>
-<p>The code for the previous simple app is shown below.  </p>
-<p>You can copy the code text and save it in a file called index.html, and execute this app right from your desktop without a need for a compiler or any setups or downloads.</p>
-
-<pre>
-&lt;button id="btn" onclick="openFile()"&gt;Load model&lt;/button&gt;
-&lt;input id="fileInput" type="file" style="visibility:hidden" onchange="readOutFile(event)" /&gt;
-&lt;br&gt;
-&lt;pre&gt;Title:&lt;/pre&gt;
-&lt;pre id="titleText"&gt;&lt;/pre&gt;
-&lt;script src="https://unpkg.com/@swmm-js/swmmjs"&gt;&lt;/script&gt;
-
-&lt;script&gt;
-	// Create an empty swmm model.
-	let model = {};
-
-	// The function called when user clicks 'btn'.
-	function openFile() {
-	// Use a familiar 'file input' dialog sequence.
-	document.getElementById('fileInput').click()
-	}
-
-	// Reading a user-selected file is just a few lines of code,
-	// called when the input 'fileInput' experiences a change:
-	function readOutFile(event) {
-	// Set the file to any selected by the user as a
-	// result of the fileInput change event.
-	var file = event.target.files[0]
-
-	// If the user did not select a file, return empty.
-	if (!file) return;
-
-	// Create a reader to read a file
-	var reader = new FileReader()
-
-	// This reader setting tells the FileReader
-	// to execute statements after the file is read.
-	reader.onload = function(event) {
-
-		// Read the model from a string into a JSON object
-		model = parseInput(event.target.result)
-
-		// Get the title
-		var theTitle = model.TITLE
-		
-		// Take a look at the SJX model structure:
-		console.log(model)
-
-		// Write the title to the webpage.
-		document.getElementById('titleText').innerHTML = theTitle;
-	}
-
-	// Tell the reader to attempt to read the file.
-	reader.readAsText(file)
-	}
-&lt;/script&gt;
-							</pre>
-							<p>If you use this code and recreate the file on your own system, you can start the app by double clicking on that file's icon.</p>
-							<p>
-								The code presented allows you to open a swmm .inp file, parse it into a Javascript object, and then access that object. 
-							</p><p>
-								The best part about using an .inp file in SJX format is that any attribute you are looking for can be easily found. Arrays of objects like links are easily referenced, and properties can be identified by names like those found in an .inp file. Identifying the model title is as easy as the line:
-							</p><pre>
-var theTitle = model.TITLE
-							</pre><p>
-								and if you know the name of a conduit, you can access the length as easy as:
-							</p><pre>
-var theLength = model.CONDUITS['conduitName'].Length 
-							</pre><p>
-								Even better, if you know the name of a timeseries, you can access, display, and update that data as shown in an upcoming demo post.
-							</p><p>
-								The same can be said for output files, and generating data protection schemes for create, read, update, and delete operations is simple enough. At any given point in time, all parts of the model are easily accessible and knowable. You have control over what data is displayed and how that data is processed or stored.
-							</p><p>
-								Once you have gotten used to using swmm .inp and .out files with Javascript, you can learn to utilize wasm, which will allow you to execute models in the browser and run swmm on iPhones, Apple computers, tablets, pretty much any device capable of running a modern browser. There are preliminary plans for branching out into React and Vue, and work for that can be seen at <link href="">this</link> Github repo.
-							</p>
-						</div>
+							<p class="lead">What are the advantages of working with swmm files as Javascript objects?</p>
+							<p>When developing applications for working with swmm files, there are plenty of options. Javascript just so happens to be an excellent choice for the following reasons:
+              </p>
+              <ul>
+                <li>No compiler</li> 
+                <li>Free, open standard</li> 
+                <li>Beautiful display options</li> 
+                <li>Access to countless open-source libraries</li> 
+                <li>Support across countless message boards</li> 
+                <li>Can create interactive web pages</li> 
+                <li>Can reside on a server or desktop</li> 
+                <li>Incredibly easy data operations</li> 
+              </ul>
+              <p>
+               This is a really good list, too. You can develop using a text editor and a modern web browser. You will not have to worry about paying any subscription or license fees for using Javascript. Javascript, when combined with HTML and CSS, is responsible for the world's most beautiful web pages. If you like a Javascript library, you only need to write the library address in your file. If you need help developing in Javascript, it is likely your question has been asked and answered a hundred times over. Developing in Javascript means you now have an interactive web page that you can show other people. Your code can remain private to you or you can share it with the world on a website. Finally, working with data in Javascript is satisfying and easy.
+               </p>
+            </div>
 					</div>
 				</div>
 

@@ -147,12 +147,13 @@
 						</ul>
 						<div class="post-content">
 							<h1>Intro to swmm-js</h1>
-							<p class="lead">Learn the structure of a simple web app using swmm-js.</p>
-							<p>swmm-js is meant to be an easy way to interact with and display swmm models and results, and this demo is a simple intro. You will see how to load, read, and display swmm file information. In later demos, you will see how to modify the data and save it, and even how to run swmm in your browser and create applications for interacting with models and results.
-							</p>
+							<p class="lead">Showing off your own file.</p>
 							<p>
-								This post is a quick intro to swmm-js. For a more in-depth explanation of what is going on in this demo, click <link>here</link>.
-							</p>
+                Often you will have some work you want to display, or you need to demonstrate a particular aspect of a model. A good way to do this is to create an app that loads/reloads only that specific model. This is necessary for web pages that display community data, worksite info, and other great communication needs. In this case you can either have the model load when the website loads, or have the model load/reload on a button click. Since I am doing demonstrations, I'll go with the load/reload method here and show the buttonless option in a later post.
+              </p>
+							<p>
+								The following app and code loads up and displays only data from the web address supplied: ''. This means you know exactly what you are working with and any interactive tools you build for that model will be simple and quick, such as already knowing that you want data from node 'TH#7AppleStreet'. Specificity like this allows for quickly speaking about exactly which parts of the model you need to identify.
+              </p>
 							<p>
 								Take a look at the following app, and the accompanying code. Clicking on 'Load Model' will open a file dialog. If you select a swmm .inp file, you can see the app display the title of the swmm model.
 							</p>
