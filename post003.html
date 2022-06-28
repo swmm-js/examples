@@ -146,22 +146,19 @@
 							<li><span>Tags:</span><a href="#">fundamentals</a>, <a href="#">webdevelopment</a></li>
 						</ul>
 						<div class="post-content">
-							<h1>Intro to swmm-js</h1>
-							<p class="lead">Showing off your own file.</p>
+							<h1>Working with files from the internet.</h1>
+							<p class="lead">Or, showing off your own file.</p>
 							<p>
                 Often you will have some work you want to display, or you need to demonstrate a particular aspect of a model. A good way to do this is to create an app that loads/reloads only that specific model. This is necessary for web pages that display community data, worksite info, and other great communication needs. In this case you can either have the model load when the website loads, or have the model load/reload on a button click. Since I am doing demonstrations, I'll go with the load/reload method here and show the buttonless option in a later post.
               </p>
 							<p>
-								The following app and code loads up and displays only data from the web address supplied: ''. This means you know exactly what you are working with and any interactive tools you build for that model will be simple and quick, such as already knowing that you want data from node 'TH#7AppleStreet'. Specificity like this allows for quickly speaking about exactly which parts of the model you need to identify.
+								The following app and code loads up and displays only data from the web address supplied: 'https://swmm-js.github.io/examples/Example1.inp'. This means you know exactly what you are working with and any interactive tools you build for that model will be simple and quick, such as already knowing that you want data from node 'TH#7AppleStreet'. Specificity like this allows for quickly speaking about exactly which parts of the model you need to identify.
               </p>
-							<p>
-								Take a look at the following app, and the accompanying code. Clicking on 'Load Model' will open a file dialog. If you select a swmm .inp file, you can see the app display the title of the swmm model.
-							</p>
-							<p>
+						  <p>
 							
 <div style="border-radius: 25px; border: 2px solid #000000; padding: 20px;">
 <button id="btn" onclick="openFile()">Load/Reload model</button>
-<br>
+<br><br>
 <pre>Title:</pre>
 <pre id="titleText"></pre>
 <script src="https://unpkg.com/@swmm-js/swmmjs"></script>
@@ -169,14 +166,19 @@
 <script>
 	// Create an empty swmm model.
 	let model = {};
+  // Identify the location of your source .inp file.
   const url = 'https://swmm-js.github.io/examples/Example1.inp'
 
 	// The function called when user clicks 'btn'.
 	function openFile() {
     fetch(url)
+      // The response of the request is stored in 'r'
       .then(r=>r.text())
+      // The text of the file is stored in 't'
       .then(t=> {
+        // Read the file into a SJX format.
         model = parseInput(t)
+        // Get the title of the model.
         var theTitle = model.TITLE
 		
 		    // Take a look at the SJX model structure:
@@ -194,76 +196,44 @@
 <p>You can copy the code text and save it in a file called index.html, and execute this app right from your desktop without a need for a compiler or any setups or downloads.</p>
 
 <pre>
-&lt;button id="btn" onclick="openFile()"&gt;Load model&lt;/button&gt;
-&lt;input id="fileInput" type="file" style="visibility:hidden" onchange="readOutFile(event)" /&gt;
+&lt;button id="btn" onclick="openFile()"&gt;Load/Reload model&lt;/button&gt;
 &lt;br&gt;
 &lt;pre&gt;Title:&lt;/pre&gt;
 &lt;pre id="titleText"&gt;&lt;/pre&gt;
 &lt;script src="https://unpkg.com/@swmm-js/swmmjs"&gt;&lt;/script&gt;
 
 &lt;script&gt;
-	// Create an empty swmm model.
-	let model = {};
+  // Create an empty swmm model.
+  let model = {};
+  // Identify the location of your source .inp file.
+  const url = 'https://swmm-js.github.io/examples/Example1.inp'
 
-	// The function called when user clicks 'btn'.
-	function openFile() {
-	// Use a familiar 'file input' dialog sequence.
-	document.getElementById('fileInput').click()
-	}
+  // The function called when user clicks 'btn'.
+  function openFile() {
+    fetch(url)
+      // The response of the request is stored in 'r'
+      .then(r=&gt;r.text())
+      // The text of the file is stored in 't'
+      .then(t=&gt; {
+        // Read the file into a SJX format.
+        model = parseInput(t)
+        // Get the title of the model.
+        var theTitle = model.TITLE
+    
+        // Take a look at the SJX model structure:
+        console.log(model)
 
-	// Reading a user-selected file is just a few lines of code,
-	// called when the input 'fileInput' experiences a change:
-	function readOutFile(event) {
-	// Set the file to any selected by the user as a
-	// result of the fileInput change event.
-	var file = event.target.files[0]
+        // Write the title to the webpage.
+        document.getElementById('titleText').innerHTML = theTitle;
+      })
+  }
 
-	// If the user did not select a file, return empty.
-	if (!file) return;
-
-	// Create a reader to read a file
-	var reader = new FileReader()
-
-	// This reader setting tells the FileReader
-	// to execute statements after the file is read.
-	reader.onload = function(event) {
-
-		// Read the model from a string into a JSON object
-		model = parseInput(event.target.result)
-
-		// Get the title
-		var theTitle = model.TITLE
-		
-		// Take a look at the SJX model structure:
-		console.log(model)
-
-		// Write the title to the webpage.
-		document.getElementById('titleText').innerHTML = theTitle;
-	}
-
-	// Tell the reader to attempt to read the file.
-	reader.readAsText(file)
-	}
 &lt;/script&gt;
 							</pre>
 							<p>If you use this code and recreate the file on your own system, you can start the app by double clicking on that file's icon.</p>
 							<p>
-								The code presented allows you to open a swmm .inp file, parse it into a Javascript object, and then access that object. 
-							</p><p>
-								The best part about using an .inp file in SJX format is that any attribute you are looking for can be easily found. Arrays of objects like links are easily referenced, and properties can be identified by names like those found in an .inp file. Identifying the model title is as easy as the line:
-							</p><pre>
-var theTitle = model.TITLE
-							</pre><p>
-								and if you know the name of a conduit, you can access the length as easy as:
-							</p><pre>
-var theLength = model.CONDUITS['conduitName'].Length 
-							</pre><p>
-								Even better, if you know the name of a timeseries, you can access, display, and update that data as shown in an upcoming demo post.
-							</p><p>
-								The same can be said for output files, and generating data protection schemes for create, read, update, and delete operations is simple enough. At any given point in time, all parts of the model are easily accessible and knowable. You have control over what data is displayed and how that data is processed or stored.
-							</p><p>
-								Once you have gotten used to using swmm .inp and .out files with Javascript, you can learn to utilize wasm, which will allow you to execute models in the browser and run swmm on iPhones, Apple computers, tablets, pretty much any device capable of running a modern browser. There are preliminary plans for branching out into React and Vue, and work for that can be seen at <link href="">this</link> Github repo.
-							</p>
+								The code presented allows you to speak directly about topics concerning a specific file, without needing anyone to go through downloading and inspecting the file. This is incredibly helpful because all communicators can reference that specific model at any given time.
+              </p>
 						</div>
 					</div>
 				</div>
